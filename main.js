@@ -16,8 +16,8 @@ function percentFormatter() {
         options = series.chart.options;
     return '<span style="color:' + this.color + '">' + series.name + ': <b>' + Math.round(this.y * options.yAxis[this.index + 1].max) + '</b><br/>';
 }
-//#248823 green, #F05E23 orange, #6A359C purple, #991B16
-Highcharts.chart('container', {
+
+Highcharts.chart('radar', {
 
     chart: {
         polar: true,
@@ -29,11 +29,12 @@ Highcharts.chart('container', {
     },
 
     title: {
-        text: 'Movie Sucess by Rating'
+        text: 'Movie Sucess by Rating',
+        align: 'center'
     },
 
     pane: {
-        size: '80%'
+        size: '100%'
     },
 
     xAxis: {
@@ -48,14 +49,14 @@ Highcharts.chart('container', {
         lineWidth: 0,
         min: 0,
         max: 1,
-        visible: false,
+        visible: false,       
     }, {
         gridLineInterpolation: 'polygon',
         lineWidth: 0,
         min: 0,
         max: 5e8,
         angle: 0,
-        tickAmount: 3
+        tickAmount: 3,
     }, {
         gridLineInterpolation: 'polygon',
         lineWidth: 0,
@@ -88,12 +89,13 @@ Highcharts.chart('container', {
 
     tooltip: {
         shared: true,
-        pointFormat: percentFormatter
+        pointFormat:percentFormatter
     },
 
     legend: {
         align: 'right',
-        verticalAlign: 'top'
+        verticalAlign: 'top',
+        layout: 'vertical'
     },
 
     series: [{
@@ -137,7 +139,7 @@ Highcharts.chart('container', {
 
 });
 
-Highcharts.chart('containerx', {
+Highcharts.chart('tree', {
     series: [{
         type: "treemap",
         layoutAlgorithm: 'stripes',
@@ -214,7 +216,7 @@ Highcharts.chart('containerx', {
     },
 });
 
-Highcharts.chart('container3', {
+Highcharts.chart('bubble', {
     chart: {
         type: 'packedbubble',
         height: '100%'
@@ -249,6 +251,11 @@ Highcharts.chart('container3', {
                 }
             }
         }
+    },
+    legend: {
+        align: 'right',
+        verticalAlign: 'top',
+        layout: 'vertical'
     },
     series: [{'name': 'Comedy',
     color:'#FBC02D',
